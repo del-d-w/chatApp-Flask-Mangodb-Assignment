@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Chat App</title>
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+	</head>
+	<body>
+		<div>
+		    <h2>Welcome to Chat App</h2>		
+			<form action="{{ url_for('add_message') }}" method="POST" role="form">		
+			    <div>
+					<input name="new-message" type="text" placeholder="Enter your message" class="input">
+					<button type="submit">Send</button>
+				</div>
+			</form>
+			<ul>
+				{% for message in messages %}
+				<li>{{ message.text }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</body>
+</html>
